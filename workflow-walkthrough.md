@@ -106,8 +106,11 @@ private func createAndAddTutorialStep(_ backgroundImageName: String,
  ```
  
  
+ ## 3. Chanllenge : UIPageControl 
+ Git branch feature-ChanllengeAdding-PagingControl  
  
- 
- 
+**NOTE: create the constraints and the view with the loop array**  
+
+  ![imagen](../feature-ChanllengeAdding-PagingControl/assets/challenge.gif)  
  
  
