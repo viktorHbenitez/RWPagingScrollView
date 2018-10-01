@@ -24,6 +24,8 @@ import UIKit
 
 class TutorialViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var pageControl : UIPageControl!
+    
     var arrPages = [TutorialStepViewController]()
 
   override func viewDidLoad() {
@@ -55,6 +57,7 @@ class TutorialViewController: UIViewController {
                                      "page3" : thirdTutorialPages.view,
                                      "page4" : fourTutorialPages.view]
     
+    let metrics = ["edgeMargin": 10, "betweenMargin" : 20]
     
     // Vertical and Hoeizontal constraint to all views
     let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[page1(==view)]|",
@@ -62,9 +65,9 @@ class TutorialViewController: UIViewController {
                                                              metrics: nil,
                                                              views: views)
     
-    let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[page1(==view)][page2(==view)][page3(==view)][page4(==view)]|",
+    let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-edgeMargin-[page1(==view)]-betweenMargin-[page2(==view)]-betweenMargin-[page3(==view)]-betweenMargin-[page4(==view)]-edgeMargin-|",
                                                                options: [.alignAllTop, .alignAllBottom],
-                                                               metrics: nil,
+                                                               metrics: metrics,
                                                                views: views)
     
     // Active them
@@ -94,4 +97,17 @@ class TutorialViewController: UIViewController {
 
 extension TutorialViewController: UIScrollViewDelegate {
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageWidth = scrollView.bounds.width
+        let pageFraction = scrollView.contentOffset.x / pageWidth  // Example 1.4
+        
+        pageControl.currentPage = Int(round(pageFraction)) // 1
+        
+    }
 }
+
+
+
+
+
+

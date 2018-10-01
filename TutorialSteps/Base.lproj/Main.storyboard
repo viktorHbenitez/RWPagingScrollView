@@ -23,26 +23,34 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYg-T5-x41">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="-10" y="0.0" width="395" height="667"/>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="dC8-Q1-JEm"/>
                                 </connections>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="baB-4d-vmF">
+                                <rect key="frame" x="0.0" y="610" width="375" height="37"/>
+                            </pageControl>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.7424651015" green="0.4864451078" blue="0.65752616210000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="baB-4d-vmF" secondAttribute="bottom" constant="20" id="RdC-06-Ljc"/>
                             <constraint firstItem="xYg-T5-x41" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="TIK-wG-oo6"/>
                             <constraint firstAttribute="bottom" secondItem="xYg-T5-x41" secondAttribute="bottom" id="VyQ-2u-PCf"/>
-                            <constraint firstItem="xYg-T5-x41" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Yo9-se-os6"/>
-                            <constraint firstAttribute="trailing" secondItem="xYg-T5-x41" secondAttribute="trailing" id="b5v-WB-ksp"/>
+                            <constraint firstItem="xYg-T5-x41" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="-10" id="Yo9-se-os6"/>
+                            <constraint firstAttribute="trailing" secondItem="xYg-T5-x41" secondAttribute="trailing" constant="-10" id="b5v-WB-ksp"/>
+                            <constraint firstAttribute="trailing" secondItem="baB-4d-vmF" secondAttribute="trailing" id="fdw-xE-Jrx"/>
+                            <constraint firstItem="baB-4d-vmF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ohW-YD-bcJ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="pageControl" destination="baB-4d-vmF" id="IYA-cF-yiX"/>
                         <outlet property="scrollView" destination="xYg-T5-x41" id="ja3-uC-0qG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="215" y="125"/>
         </scene>
         <!--Tutorial Step View Controller-->
         <scene sceneID="Thn-AD-1if">
@@ -99,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBg-co-d7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="823" y="109"/>
+            <point key="canvasLocation" x="894" y="125"/>
         </scene>
     </scenes>
 </document>

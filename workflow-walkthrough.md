@@ -2,8 +2,7 @@
 
 ![imagen](../master/assets/pageMetrics.png)  
 
-
-## Create a Tutorial with scrollView
+## 1. Create a Tutorial with scrollView
 Instantiate multiple instances if this tutorials steps (ViewControllers)   
 
 ![imagen](../master/assets/scrollViewTutorial.gif)  
@@ -37,3 +36,78 @@ private func createAndAddTutorialStep(_ backgroundImageName: String,
  2.2 Create a dictionary with the views  
  2.3 Vertical and Hoeizontal constraint to all views.  
  2.4 Active them  
+ 
+ ## 2. UIPageControl & Gaps between Views
+ 
+ ![imagen](../master/assets/pageControl.gif)  
+ 
+ ### Add Gaps between pages
+ ![imagen](../master/assets/gaps.png)   
+ ![imagen](../master/assets/gaps2.png)  
+ 
+  ### STEPS
+  
+  1. in scrollView add horizontal paddin in the storyboard    
+  2. Add Metrics  
+  
+  ```swift
+    let views : [String : UIView] = ["view": view,
+                                     "page1": firstTutorialPages.view,
+                                     "page2": secondTutorialPages.view,
+                                     "page3" : thirdTutorialPages.view,
+                                     "page4" : fourTutorialPages.view]
+    
+    // Metrics have the padding added in the scrollview
+    let metrics = ["edgeMargin": 10, "betweenMargin" : 20]
+    
+    // Vertical and Hoeizontal constraint to all views
+    let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[page1(==view)]|",
+                                                             options: [],
+                                                             metrics: nil,
+                                                             views: views)
+    
+    // Add the metrics in the constraints
+    let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-edgeMargin-[page1(==view)]-betweenMargin-[page2(==view)]-betweenMargin-[page3(==view)]-betweenMargin-[page4(==view)]-edgeMargin-|",
+                                                               options: [.alignAllTop, .alignAllBottom],
+                                                               metrics: metrics,
+                                                               views: views)
+    
+    // Active them
+    NSLayoutConstraint.activate(verticalConstraints + horizontalConstraints)
+    
+  ```
+  
+  ## UIPageControl
+  
+ ### Important properties:
+ numberOfProperties  
+ currentPage  
+ 
+ ### ToCalculate current Page
+ **round(content offset  x / content width )**  
+ 
+ 
+ ### STEPS
+ 
+ 1. Add UIPageControl  in the scrolView as a brothers  
+ 2. Use a ScrollView delegate  and overide the method `func scrollViewDidScroll(_ scrollView: UIScrollView) {}`
+ 3. Calculate the current page scroll  
+ 
+ ```swift
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        // width the current view
+        let pageWidth = scrollView.bounds.width
+        let pageFraction = scrollView.contentOffset.x / pageWidth  // Example 1.4
+        
+        pageControl.currentPage = Int(round(pageFraction)) // 1
+        
+    }
+ ```
+ 
+ 
+ 
+ 
+ 
+ 
+ 
